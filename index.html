@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>TodoList</title>
-    <style>
+  <meta charset="utf-8">
+  <title>TodoList</title>
+  <style>
     body {
       font-family: Helvetica, Arial, sans-serif;
       font-size: 18px;
@@ -28,6 +28,7 @@
       display: block;
       width: 478px;
       border-radius: 3px;
+      border: 1px solid #e6e6e6;
       padding: 10px;
       font-size: 18px;
     }
@@ -48,7 +49,7 @@
       background-color: #e6e6e6;
     }
 
-    ul#totolist .todo.completed label {
+    ul#todolist .todo.completed label {
       text-decoration: line-through;
       color: #999;
     }
@@ -59,7 +60,7 @@
       color: #e6e6e6;
       padding: 5px;
       border-bottom-left-radius: 3px;
-      border_border-bottom-right-radius: : 3px;
+      border-bottom-right-radius: 3px;
     }
 
     .footer a:link,
@@ -72,33 +73,53 @@
     .footer a:hover {
       text-decoration: underline;
     }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>TodoList</h1>
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>TodoList</h1>
 
-      <form>
+    <form>
       <input type="text" id="new-todo" placeholder="What needs to be done?">
-      </form>
+    </form>
 
-      <ul id="todolist">
-        <li class="todo">
-          <input id="todo-2" type="checkbox" value="1">
-          <label for="todo-2">Dust the vases</label>
-        </li>
-      </ul>
-      <div classs="footer">
-        Todo: <span id="todo-count">1</span> •
-        Done: <span id="completed-count">0</span> •
-        Total: <span id="total-count">1</span>
-      </div>
+    <ul id="todolist">
+      <li class="todo">
+        <input id="todo-1" type="checkbox" value="1">
+        <label for="todo-1">Sweep the floor</label>
+      </li>
+      <li class="todo completed">
+        <input id="todo-2" type="checkbox" value="1" checked="checked">
+        <label for="todo-2">Dust the vases</label>
+      </li>
+    </ul>
+    <div class="footer">
+      Todo: <span id="todo-count">1</span> •
+      Done: <span id="completed-count">0</span> •
+      Total: <span id="total-count">1</span>
+    </div>
+  </div>
 
-      <script>
-      var todoCounter = document.getElementById('todo-count');
-      var totalTodos = document.getElementsByClassName("todo").length;
-      todoCounter.innerHTML = totalTodos;
-      </script>
+  <script>
+  function updateCounters() {
 
-    </body>
-    </html>
+  var todoCounter = document.getElementById('todo-count');
+  var totalTodos = document.getElementsByClassName("todo").length;
+  todoCounter.innerHTML = totalTodos;
+
+  var completedCount = document.getElementById('completed-count');
+  var completedTodos = document.getElementsByClassName("completed").length;
+  completedCount.innerHTML = completedTodos;
+
+  var todoCount = document.getElementById('todo-count');
+    var uncompletedTodos = totalTodos - completedTodos;
+    todoCount.innerHTML = uncompletedTodos;
+
+  }
+
+  updateCounters();
+
+</script>
+
+</body>
+</html>
